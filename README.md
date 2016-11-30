@@ -1,9 +1,6 @@
-# wash
+# simpleLocalDb
 
-> simpleLocalDb
-
-## installation
-simpleLocalDb is a local data store with localStorage and cookie
+> simpleLocalDb is a local data store with localStorage and cookie
 
 ## Installation
 
