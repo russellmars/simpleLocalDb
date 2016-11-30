@@ -1,0 +1,21 @@
+{
+  "name": "simple-local-db",
+  "description": "simpleLocalDb is a local data store with localStorage and cookie",
+  "main": "index.js",
+  "authors": [
+    "russellmars"
+  ],
+  "license": "ISC",
+  "keywords": [
+    "localStorage",
+    "cookie"
+  ],
+  "homepage": "https://github.com/russellmars/simpleLocalDb",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
