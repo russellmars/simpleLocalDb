@@ -1,7 +1,7 @@
 {
   "name": "simple-local-db",
-  "version": "1.0.0",
-  "description": "",
+  "version": "1.0.1",
+  "description": "simpleLocalDb is a local data store with localStorage and cookie",
   "main": "index.js",
   "repository": {
     "type": "git",

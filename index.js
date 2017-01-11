@@ -1,6 +1,21 @@
 var simpleLocalDb = (function (global) {
   var store = {}
 
+  store.prefix = ''
+
+  store.setPrefix = function (prefix) {
+    this.prefix = prefix
+  }
+
+  store.getRealKey = function (key) {
+    if (this.prefix) {
+      return this.prefix + '_' + key
+    } else {
+      return key
+    }
+    
+  }
+
   store.clear = function () {}
   store.getItem = function (key) {}
   store.setItem = function (key, value) {}
@@ -40,17 +55,17 @@ var simpleLocalDb = (function (global) {
       storage.clear()
     }
     store.getItem = function (key) {
-      return store.deserialize(storage.getItem(key))
+      return store.deserialize(storage.getItem(store.getRealKey(key)))
     }
     store.setItem = function (key, value) {
       if (value === null || value === undefined) {
-        store.removeItem(key)
+        store.removeItem(store.getRealKey(key))
       } else {
-        storage.setItem(key, store.serialize(value))
+        storage.setItem(store.getRealKey(key), store.serialize(value))
       }
     }
     store.removeItem = function (key) {
-      storage.removeItem(key)
+      storage.removeItem(store.getRealKey(key))
     }
 
   } else {
@@ -78,7 +93,7 @@ var simpleLocalDb = (function (global) {
       }
     }
     store.getItem = function (key) {
-      var value = getCookies()[key]
+      var value = getCookies()[store.getRealKey(key)]
       if (value) {
         return store.deserialize(decodeURIComponent(value))
       }
@@ -88,7 +103,7 @@ var simpleLocalDb = (function (global) {
       var date = new Date()
       date.setTime(date.getTime() + (maxAgeDay ? maxAgeDay : 1) * (24 * 60 * 60 * 1000))
 
-      document.cookie = key + '=' + encodeURIComponent(store.serialize(value)) 
+      document.cookie = store.getRealKey(key) + '=' + encodeURIComponent(store.serialize(value)) 
         + '; path=/; expires=' + date.toGMTString()
     }
     store.removeItem = function (key) {
