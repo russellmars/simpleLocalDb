@@ -13,19 +13,19 @@ npm install simple-local-db --save
 ``` javascript
 import 'simple-local-db'
 
-// add prefix for key, the real key name will renamed by example_key, avoid duplicate key. 
-// this statement put front position as possible
+// 给key添加前缀，避免同域名下的key值重复. 
+// 应尽可能的把设置前缀的语句往前放
 simpleLocalDb.setPrefix('example')
 
-// save item
+// 保存一个key-value
 simpleLocalDb.setItem(key, value)
 
-// get item
+// 获取key对应的value
 simpleLocalDb.getItem(key)
 
-// clear all item
+// 清空所有的存值
 simpleLocalDb.clear()
 
-// remove item
+// 移除某一项
 simpleLocalDb.removeItem(key)
 ```
