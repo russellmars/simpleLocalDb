@@ -13,6 +13,10 @@ npm install simple-local-db --save
 ``` javascript
 import 'simple-local-db'
 
+// add prefix for key, the real key name will renamed by example_key, avoid duplicate key. 
+// this statement put front position as possible
+simpleLocalDb.setPrefix('example')
+
 // save item
 simpleLocalDb.setItem(key, value)
 
@@ -24,5 +28,4 @@ simpleLocalDb.clear()
 
 // remove item
 simpleLocalDb.removeItem(key)
-
 ```
